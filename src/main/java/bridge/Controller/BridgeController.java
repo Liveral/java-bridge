@@ -38,7 +38,11 @@ public class BridgeController {
 
 
 
-    public void compare(){
-
+    public boolean compare(String move){ //이동할 칸과 비교해서 같으면 통과를 뜻하는 true, 다르면 false를 return한다.
+        int moveIndex=bridge.getCheckIndex(); //이번에 사용자가 이동할 칸의 인덱스 값
+        if(move.equals(bridge.getMadeBridge().get(moveIndex))){
+            return true;
+        }
+        return false;
     }
 }
