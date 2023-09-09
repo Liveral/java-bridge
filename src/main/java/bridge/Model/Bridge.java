@@ -43,10 +43,11 @@ public class Bridge {
         return checkedBridge;
     }
 
-    public void setCheckedBridge(List<String> checkedBridge) {
-        this.checkedBridge = checkedBridge;
+    public void setCheckedBridge(String result) {
+        checkedBridge.add(result);
     }
     public void clearCheckedBridge(){ //게임이 다시시작되면 기존의 checkedBridge를 비워주기 위한 함수
         checkedBridge.clear();
+        checkIndex=0;
     }
 }
