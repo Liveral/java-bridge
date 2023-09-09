@@ -18,10 +18,6 @@ public class Bridge {
         return checkIndex;
     }
 
-    public void setCheckIndex(int checkIndex) {
-        this.checkIndex = checkIndex;
-    }
-
 
     public int getBridgeLength() {
         return bridgeLength;
@@ -45,6 +41,7 @@ public class Bridge {
 
     public void setCheckedBridge(String result) {
         checkedBridge.add(result);
+        checkIndex++;
     }
     public void clearCheckedBridge(){ //게임이 다시시작되면 기존의 checkedBridge를 비워주기 위한 함수
         checkedBridge.clear();
