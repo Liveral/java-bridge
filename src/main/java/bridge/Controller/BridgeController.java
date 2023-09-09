@@ -1,5 +1,6 @@
 package bridge.Controller;
 
+import bridge.BridgeGame;
 import bridge.BridgeMaker;
 import bridge.BridgeNumberGenerator;
 import bridge.BridgeRandomNumberGenerator;
@@ -15,6 +16,7 @@ public class BridgeController {
     OutputView outputView=new OutputView();
     Bridge bridge=new Bridge();
     BridgeNumberGenerator bridgeNumberGenerator=new BridgeRandomNumberGenerator();
+    BridgeGame bridgeGame=new BridgeGame();
     public BridgeController() {
 
     }
@@ -39,5 +41,18 @@ public class BridgeController {
         }
     }
 
+    public void userMove(){
+        String moving=inputView.readMoving();
+        movingValidateCheck(moving); //이동할 칸 입력값 예외처리
 
+    }
+
+    public void movingValidateCheck(String input){
+        try {
+            BridgeControllerException.alphabetCheck(input);
+        }
+        catch (IllegalArgumentException e){
+            System.out.println(e.getMessage());
+        }
+    }
 }
