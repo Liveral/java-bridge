@@ -33,16 +33,16 @@ public class BridgeController {
     public void userMove(){
         String moving=inputView.readMoving();
         BridgeControllerException.movingValidateCheck(moving); //이동할 칸 입력값 예외처리
-        String a=bridge.getMadeBridge().get(0);
+
     }
 
 
 
-    public boolean compare(String move){ //이동할 칸과 비교해서 같으면 통과를 뜻하는 true, 다르면 false를 return한다.
+    public void compareToBridge(String move){
         int moveIndex=bridge.getCheckIndex(); //이번에 사용자가 이동할 칸의 인덱스 값
         if(move.equals(bridge.getMadeBridge().get(moveIndex))){
-            return true;
+           outputView.printMap(true, moveIndex); //이동할 칸과 비교해서 같으면 통과를 뜻하는 true와 moveIndex값을 OutputView클래스의 printMap에 전달한다.
         }
-        return false;
+        outputView.printMap(false,moveIndex); ////다르면 실패를 뜻하는 false와 moveIndex값을 OutputView클래스의 printMap에 전달한다.
     }
 }
