@@ -51,8 +51,19 @@ public class BridgeController {
         int lastIndex=bridge.getCheckIndex()-1; //가장 마지막으로 체크한 칸의 인덱스
         return bridge.getMadeBridge().get(lastIndex);
     }
-
-
+    public boolean isFail(){
+        if(getLastResult()=="X"){ //마지막 결과가 실패이면 실패를 뜻하는 true 리턴
+            return true;
+        }
+        return false;
+    }
+    public boolean isSuccess(){
+        int lastIndex=bridge.getCheckIndex()-1; //가장 마지막으로 체크한 칸의 인덱스
+        if(lastIndex==bridge.getBridgeLength()&&getLastResult()=="O"){ //끝까지 다리를 이동하고 마지막에 올바른 칸으로 이동까지 했을때 true 리턴
+            return true;
+        }
+        return false;
+    }
     public boolean getRetry(){
         String retry=inputView.readGameCommand();
         BridgeControllerException.retryAlphabetCheck(retry);
