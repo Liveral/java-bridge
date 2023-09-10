@@ -34,15 +34,29 @@ public class BridgeControllerException {
 
     public static void movingValidateCheck(String input){
         try {
-            alphabetCheck(input);
+            movingAlphabetCheck(input);
         }
         catch (IllegalArgumentException e){
             System.out.println(e.getMessage());
         }
     }
-    public static void alphabetCheck(String inputString){
+    public static void movingAlphabetCheck(String inputString){
         if(!inputString.equals("D")&&!inputString.equals("U")){
             throw new IllegalArgumentException("[ERROR] 이동할 칸은 U 또는 D로 입력해주세요");
+        }
+    }
+
+    public static void retryValidateCheck(String input){
+        try {
+            retryAlphabetCheck(input);
+        }
+        catch (IllegalArgumentException e){
+            System.out.println(e.getMessage());
+        }
+    }
+    public static void retryAlphabetCheck(String inputString){
+        if(!inputString.equals("R")&&!inputString.equals("Q")){
+            throw new IllegalArgumentException("[ERROR] 게임 재시도 여부는 R또는 Q로 입력해주세요");
         }
     }
 }

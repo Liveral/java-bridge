@@ -28,7 +28,15 @@ class BridgeControllerExceptionTest {
     @Test
     void 예외_테스트3() {
         Assertions.assertThrows(IllegalArgumentException.class,()->{
-            BridgeControllerException.alphabetCheck("u");
+            BridgeControllerException.movingAlphabetCheck("u");
+        });
+
+    }
+    @DisplayName("입력받은 재시작 여부가 R또는 Q로 입력되지 않았다면 예외처리")
+    @Test
+    void 예외_테스트4() {
+        Assertions.assertThrows(IllegalArgumentException.class,()->{
+            BridgeControllerException.retryAlphabetCheck("q");
         });
 
     }
