@@ -52,12 +52,7 @@ public class BridgeController {
         return bridge.getMadeBridge().get(lastIndex);
     }
 
-    public boolean isFail(){
-        if(getLastResult()=="X"){ //마지막 결과가 실패이면 실패를 뜻하는 true 리턴
-            return true;
-        }
-        return false;
-    }
+
     public boolean getRetry(){
         String retry=inputView.readGameCommand();
         BridgeControllerException.retryAlphabetCheck(retry);
