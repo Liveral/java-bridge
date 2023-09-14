@@ -12,7 +12,7 @@ class BridgeControllerExceptionTest {
     @Test
     void 예외_테스트1() {
         Assertions.assertThrows(NumberFormatException.class,()->{
-            BridgeControllerException.rangeCheck("3a");
+            BridgeControllerException.numberCheck("a");
         });
 
     }

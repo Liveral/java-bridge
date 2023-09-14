@@ -9,7 +9,9 @@ public class Bridge {
     private List<String> madeBridge; //랜덤으로 만들어진 다리
 
     private int checkIndex=0; // 사용자가 이번 차례에 이동하는 칸의 인덱스
-    private List<String> checkedBridge;
+    private List<String> checkedUpBridge=new ArrayList<>(); //위 칸의 이동 결과를 보관하는 리스트
+    private List<String> checkedDownBridge=new ArrayList<>(); //아래 칸의 이동 결과를 보관하는 리스트
+    
 
     public Bridge(){
     }
@@ -35,16 +37,27 @@ public class Bridge {
         this.madeBridge = madeBridge;
     }
 
-    public List<String> getCheckedBridge() {
-        return checkedBridge;
+    public List<String> getCheckedUpBridge() {
+        return checkedUpBridge;
+    }
+    public List<String> getCheckedDownBridge() {
+        return checkedDownBridge;
     }
 
-    public void setCheckedBridge(String result) {
-        checkedBridge.add(result);
+    public void setCheckedBridge(String result,String move) {
+        if(move.equals("U")){
+            checkedUpBridge.add(result);
+            checkedDownBridge.add(" ");
+            checkIndex++;
+            return;
+        }
+        checkedUpBridge.add(" ");
+        checkedDownBridge.add(result);
         checkIndex++;
     }
     public void clearCheckedBridge(){ //게임이 다시시작되면 기존의 checkedBridge를 비워주기 위한 함수
-        checkedBridge.clear();
+        checkedUpBridge.clear();
+        checkedDownBridge.clear();
         checkIndex=0;
     }
 }

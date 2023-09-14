@@ -11,11 +11,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BridgeController {
+    private int trialNum=0;
     InputView inputView=new InputView();
     OutputView outputView=new OutputView();
     Bridge bridge=new Bridge();
     BridgeNumberGenerator bridgeNumberGenerator=new BridgeRandomNumberGenerator();
-    private int trialNum=0;
     public BridgeController() {
 
     }
@@ -49,7 +49,7 @@ public class BridgeController {
 
     public String getLastResult(){ //결과 리스트의 마지막 결과를 가져온다.
         int lastIndex=bridge.getCheckIndex()-1; //가장 마지막으로 체크한 칸의 인덱스
-        return bridge.getMadeBridge().get(lastIndex);
+        return bridge.getCheckedUpBridge().get(lastIndex);
     }
     public boolean isFail(){
         if(getLastResult()=="X"){ //마지막 결과가 실패이면 실패를 뜻하는 true 리턴
@@ -58,8 +58,8 @@ public class BridgeController {
         return false;
     }
     public boolean isSuccess(){
-        int lastIndex=bridge.getCheckIndex()-1; //가장 마지막으로 체크한 칸의 인덱스
-        if(lastIndex==bridge.getBridgeLength()&&getLastResult()=="O"){ //끝까지 다리를 이동하고 마지막에 올바른 칸으로 이동까지 했을때 true 리턴
+        int length=bridge.getCheckIndex(); //사용자가 이동한 길이
+        if(length==bridge.getBridgeLength()&&getLastResult().equals("O")){ //끝까지 다리를 이동하고 마지막에 올바른 칸으로 이동까지 했을때 true 리턴
             return true;
         }
         return false;
@@ -71,5 +71,17 @@ public class BridgeController {
             return true;
         }
         return false;
+    }
+    public void addTrialNum(){
+        trialNum++;
+    }
+    public void clearResult(){
+        bridge.clearCheckedBridge();
+    }
+
+    public void printGameResult(){
+        outputView.printResultMessage();
+        outputView.printMap(bridge.getCheckedUpBridge(),bridge.getCheckedDownBridge());
+        outputView.printResult(getLastResult(),trialNum);
     }
 }
