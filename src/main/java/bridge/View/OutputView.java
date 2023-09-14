@@ -53,7 +53,7 @@ public class OutputView {
      */
     public void printResult(String result,int trialNumber) {
         System.out.print("게임 성공 여부: ");
-        System.out.println(ResultEnum.valueOf(result).getResult());
+        System.out.println(ResultEnum.valueOf(result).getResult()); //Enum클래스에서 값을 가져온다.
         System.out.print("총 시도한 횟수: ");
         System.out.println(trialNumber);
     }
