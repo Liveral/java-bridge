@@ -39,7 +39,12 @@ public class OutputView {
         System.out.println(RIGHT_WALL);
     }
 
-
+    public void additionPrint(List<String> bridge){ //사이즈가 1보다 클때 추가로 출력하는 함수
+        for (int i=1;i<bridge.size();i++){
+            System.out.print(DIVIDE_WALL);
+            System.out.print(bridge.get(i));
+        }
+    }
 
     /**
      * 게임의 최종 결과를 정해진 형식에 맞춰 출력한다.
